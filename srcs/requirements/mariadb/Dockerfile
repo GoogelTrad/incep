@@ -10,8 +10,8 @@ COPY conf/my.cnf ~/my.cnf
 
 RUN	mkdir -p /run/mysqld
 RUN	mkdir -p /var/lib/mysql
+RUN	chmod 777 /var/lib/mysql/
 RUN	chown -R mysql /var/lib/mysql
-RUN	chmod 777 /var/lib/mysql
 
 COPY conf/setup.sh setup.sh
 RUN	chmod +x setup.sh

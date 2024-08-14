@@ -1,7 +1,7 @@
 FROM alpine:3.20
 
 RUN apk update && apk upgrade
-RUN apk add php php-fpm curl
+RUN apk add php php-fpm php-mysqli php-phar curl
 
 COPY ./conf/setup.sh /
 COPY ./conf/wp-config.php /

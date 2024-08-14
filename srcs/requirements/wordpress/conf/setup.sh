@@ -34,4 +34,4 @@ mkdir -p /run/php
 wp redis enable --allow-root
 
 #starts php service in the background
-/usr/sbin/php-fpm7.3 -F
+/usr/sbin/php-fpm -F
