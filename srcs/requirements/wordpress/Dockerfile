@@ -8,14 +8,14 @@ RUN apk add php83 \
 			curl \
 			php83-common \
 			php83-apache2 \
-			php83-iconv
+			php83-iconv \ 
+			openrc
 RUN apk add mysql-client
 
 RUN addgroup nginx && adduser --system --no-create-home --ingroup nginx nginx 
 COPY ./conf/default.conf /etc/php83/conf.d/www.conf
 
 COPY ./conf/setup.sh /
-COPY ./conf/wp-config.php /
 RUN chmod 777 /setup.sh
 
 CMD [ "./setup.sh" ]

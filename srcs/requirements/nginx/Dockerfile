@@ -3,7 +3,7 @@ FROM alpine:3.20
 
 RUN		apk update
 RUN		apk upgrade
-RUN		apk add nginx openssl
+RUN		apk add nginx openssl curl openrc
 
 
 
