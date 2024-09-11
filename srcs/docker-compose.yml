@@ -27,7 +27,11 @@ services:
       - mariadb
     restart: unless-stopped
     ports:
-      - 9000:9000
+      - 9000:9000 
+    secrets:
+      - db_password
+      - db_root_password
+      - credentials
 
   mariadb:
     container_name: mariadb
@@ -39,6 +43,10 @@ services:
     volumes:
       - database:/var/lib/mysql
     restart: unless-stopped
+    secrets: 
+        - db_password
+        - db_root_password
+        - credentials
 
 volumes:
   www:
@@ -58,3 +66,11 @@ networks:
   inception:
     name: inception
     driver: bridge
+
+secrets:
+  db_password: 
+      file: ../secrets/db_password.txt
+  db_root_password: 
+      file: ../secrets/db_root_password.txt
+  credentials:
+      file: ../secrets/credentials.txt

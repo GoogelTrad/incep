@@ -15,5 +15,5 @@ RUN	chown -R mysql /var/lib/mysql
 
 COPY conf/setup.sh setup.sh
 RUN	chmod +x setup.sh
-EXPOSE	3306
+#EXPOSE	3306
 CMD ["./setup.sh"]

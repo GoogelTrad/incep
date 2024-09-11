@@ -1,5 +1,8 @@
 #!/bin/sh
 
+MB_PASSWORD=$(cat /run/secrets/db_password)
+MB_ROOT_PASSWORD=$(cat /run/secrets/db_root_password)
+
 if [ ! -d "/run/mysqld" ]; then
 	mkdir -p /run/mysqld
 	chown -R mysql:mysql /run/mysqld
@@ -13,6 +16,7 @@ if [ ! -d "/var/lib/mysql/mysql" ]; then
 	mysql_install_db --basedir=/usr --datadir=/var/lib/mysql --user=mysql --rpm
 
 	cat << EOF > tmp.sql
+
 
 USE mysql;
 FLUSH PRIVILEGES;
@@ -33,10 +37,7 @@ EOF
 	rm -rf /tmp.sql
 fi
 
-#kill $(cat /var/run/mysqld/mysqld.pid)
 sed -i "s|skip-networking|# skip-networking|g" /etc/my.cnf.d/mariadb-server.cnf
 sed -i "s|.*bind-address\s*=.*|bind-address=0.0.0.0|g" /etc/my.cnf.d/mariadb-server.cnf
 
-#exec /usr/bin/mysqld --user=mysql --console
-
-exec /usr/bin/mysqld
+exec /usr/bin/mysqld --user=mysql --console

@@ -10,7 +10,7 @@ RUN apk add php83 \
 			php83-apache2 \
 			php83-iconv \ 
 			openrc
-RUN apk add mysql-client
+#RUN apk add mysql-client
 
 RUN addgroup nginx && adduser --system --no-create-home --ingroup nginx nginx 
 COPY ./conf/default.conf /etc/php83/conf.d/www.conf

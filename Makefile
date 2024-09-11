@@ -1,5 +1,5 @@
 
-volumes= ~/goinfre/data/www ~/goinfre/data/database
+volumes= ~/cmichez/data/www ~/cmichez/data/database
 
 all: setup
 	@docker compose -f srcs/docker-compose.yml up --build
@@ -16,7 +16,6 @@ re:
 clean:
 	@sudo rm -rf $(volumes)
 	@docker compose -f srcs/docker-compose.yml down
-	@docker system prune --volumes --force
-	@docker image prune --all --force
+	@docker system prune -f -a
 
 .PHONY: all re down clean
