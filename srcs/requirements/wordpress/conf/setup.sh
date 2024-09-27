@@ -4,7 +4,7 @@ curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.pha
 chmod +x wp-cli.phar 
 
 mv wp-cli.phar /usr/local/bin/wp
-rm -f /var/www/html/wp-config.php
+#rm -f /var/www/html/wp-config.php
 
 cd /var/www/html
 

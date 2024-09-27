@@ -1,5 +1,5 @@
 
-volumes= ~/cmichez/data/www ~/cmichez/data/database
+volumes= ~/data/www ~/data/database
 
 all: setup
 	@docker compose -f srcs/docker-compose.yml up --build
